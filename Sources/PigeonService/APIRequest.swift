@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 /// Specifies the HTTP request `method` for `APIRequestType`
 public enum HTTPMethod: String {

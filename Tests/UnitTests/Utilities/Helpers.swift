@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 @testable import PigeonService
 
 struct TestError: LocalizedError, Equatable {

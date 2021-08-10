@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 @testable import PigeonService
 
 class MockAPIRequest<B: Encodable, ResponseB: Decodable>: APIRequestType {

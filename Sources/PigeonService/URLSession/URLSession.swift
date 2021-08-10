@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 public protocol URLSessionType {
     func send(_ request: URLRequest, completionHandler: @escaping (Result<URLSessionResponse, Error>) -> Void)

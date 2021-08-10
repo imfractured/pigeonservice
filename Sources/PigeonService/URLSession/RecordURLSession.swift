@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 /// `URLSessionType` implementation used for recording the mock jsons in the local file system
 public class RecordURLSession: URLSessionType {
