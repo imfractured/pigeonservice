@@ -1,0 +1,174 @@
+opt_in_rules:
+  - anyobject_protocol
+  - array_init
+  - attributes
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - convenience_type
+  - discouraged_object_literal
+  - discouraged_optional_boolean
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - empty_xctest_method
+  - enum_case_associated_values_count
+  - expiring_todo
+  - explicit_init
+  - explicit_self
+  - extension_access_modifier
+  - fallthrough
+  - fatal_error_message
+  - file_header
+  - file_name_no_space
+  - first_where
+  - flatmap_over_map_reduce
+  - force_unwrapping
+  - function_default_parameter_at_end
+  - identical_operands
+  - implicit_return
+  - implicitly_unwrapped_optional
+  - indentation_width
+  - joined_default_parameter
+  - last_where
+  - legacy_multiple
+  - legacy_random
+  - literal_expression_end_indentation
+  - lower_acl_than_parent
+  - modifier_order
+  - multiline_arguments
+  - multiline_arguments_brackets
+  - multiline_literal_brackets
+  - multiline_parameters
+  - multiline_parameters_brackets
+  - nimble_operator
+  - nslocalizedstring_key
+  - nslocalizedstring_require_bundle
+  - number_separator
+  - object_literal
+  - operator_usage_whitespace
+  - optional_enum_case_matching
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
+  - private_action
+  - private_outlet
+  - prohibited_interface_builder
+  - prohibited_super_call
+  - quick_discouraged_call
+  - quick_discouraged_focused_test
+  - quick_discouraged_pending_test
+  - raw_value_for_camel_cased_codable_enum
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - required_enum_case
+  - sorted_first_last
+  - sorted_imports
+  - static_operator
+  - strict_fileprivate
+  - strong_iboutlet
+  - switch_case_on_newline
+  - toggle_bool
+  - unneeded_parentheses_in_closure_argument
+  - unowned_variable_capture
+  - untyped_error_in_catch
+  - unused_declaration
+  - unused_import
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_between_cases
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - xct_specific_matcher
+  - yoda_condition  
+
+disabled_rules:
+  - todo
+  - type_name
+  - nesting
+
+
+indentation_width:
+  indentation_width: 4
+  
+identifier_name:
+  min_length: 2
+  
+fallthrough:
+  severity: error
+
+number_separator:
+  minimum_length: 5
+
+custom_rules:
+  no_combine_print:
+    name: "Combine Publisher.print"
+    regex: "\\.print\\("
+    message: "The print operator should be removed."
+    severity: warning
+
+  no_fixme:
+    name: "FIXME"
+    regex: "(?i)(FIXME)"
+    message: "FIXMEs should be fixed prior to committing to version control."
+    severity: warning
+
+  no_objcMembers:
+    name: "@objcMembers"
+    regex: "@objcMembers"
+    message: "Explicitly use @objc on each member you want to expose to Objective-C"
+    severity: error
+  
+  header_boilerplate:
+    name: "File header boilerplate"
+    regex: "Copyright|Created by"
+    match_kinds:
+      - comment
+    message: "Please remove the file header boilerplate."
+    severity: warning
+  
+  vertical_whitespace_between_cases:
+    included: ".*.swift"
+    regex: '[^\s{][ \t]*\n[ \t]*(?:case[^\n]+|default):[ \t]*\n'
+    name: "Vertical Whitespace Between Cases"
+    message: "Include a vertical whitespace (empty line) between cases in switch statements."
+    severity: warning
+  
+  empty_lines_after_type_declarations:
+    included: ".*.swift"
+    name: "Empty lines after type declarations"
+    regex: '(struct|class|enum|protocol|extension) ([\w]+(:\s*[\w\s,]+)* )\{\n\n'
+    message: "There should be no empty lines after type declarations"
+    severity: warning
+  
+  no_default_case:
+    included: ".*.swift"
+    name: "No default case"
+    regex: '^[\t]+default:'
+    message: "Default case should not be used. Disable rule incase of equatable conformance or default case is justifiable"
+    severity: warning
+
+  no_implicit_init:
+    included: ".*.swift"
+    name: "No implicit init"
+    regex: '^\s*\.init\(.*\)'
+    message: "Please use the explicit type initializer."
+    severity: warning
+
+  count_instead_number_of:
+    included: ".*.swift"
+    name: "Use count intead of numberOf"
+    regex: '((let)|(var){1}) numberOf'
+    message: "Please use count as a name instead of numberOf."
+    severity: warning
+
+  no_lifecycle_events:
+    included: ".*.swift"
+    name: "Do not rely on SwiftUI lifecycle events as they are unstable"
+    regex: '\.onAppear|\.onDisappear'
+    message: "Please do not rely on SwiftUI lifecycle events as they are unstable"
+    severity: warning

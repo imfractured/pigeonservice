@@ -1,0 +1,10 @@
+disabled_rules:
+  - force_cast
+  - force_try
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - function_body_length
+  - overridden_super_call
+  - xctfail_message
+  - type_body_length
+  - file_length

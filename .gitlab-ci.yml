@@ -1,0 +1,36 @@
+image: gcr.io/loblaw-gcr/prem-ios-pipeline:latest
+
+default:
+  tags:
+    - gcp-secure
+
+stages:
+  - lint
+  - test
+
+before_script:
+  - gitrise.sh -v
+
+linting:
+  stage: lint
+  image: gcr.io/loblaw-gcr/ep-mobile-swiftlint:latest
+  before_script:
+    - swiftlint version
+  script: 
+    - swiftlint-run --strict
+  only: 
+    - merge_requests
+
+unit_tests:
+  stage: test
+  variables:
+    GIT_URL: 'ssh\://git@gitlab.lblw.ca\:2222/mobile/ios/shared/swiftpackages/api-service.git'
+    PROJECT_NAME: 'api-service'
+    BITRISE_WORKFLOW: 'Shared-Default'
+    RUN_COMMAND: './scripts/run-tests.sh'
+  script: 
+    - gitrise.sh -w $BITRISE_WORKFLOW -b $CI_COMMIT_REF_NAME -a $BITRISE_ACCESS_TOKEN -s $BITRISE_APP_SLUG -e GIT_URL:$GIT_URL,PROJECT_NAME:$PROJECT_NAME,RUN_COMMAND:"$RUN_COMMAND"
+  only:
+  - merge_requests
+  - master
+
