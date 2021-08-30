@@ -29,7 +29,10 @@ let package = Package(
         ),
         .testTarget(
             name: "UnitTests",
-            dependencies: ["PigeonService"]
+            dependencies: ["PigeonService"],
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

@@ -33,11 +33,20 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		1A7D47CD26DC27B6002292A6 /* PigegonLogType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A7D47CC26DC27B6002292A6 /* PigegonLogType.swift */; };
+		C108149326CB550100896ADD /* GET_Mock_Response_Without_Request.json in Resources */ = {isa = PBXBuildFile; fileRef = C108148226CADBD900896ADD /* GET_Mock_Response_Without_Request.json */; };
+		C108149426CB550100896ADD /* POST_Mock_Response_With_Dates_In_Request.json in Resources */ = {isa = PBXBuildFile; fileRef = C108148126CADBD900896ADD /* POST_Mock_Response_With_Dates_In_Request.json */; };
+		C108149526CB550100896ADD /* POST_Mock_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = C108148026CADBD900896ADD /* POST_Mock_Response.json */; };
+		C108149626CB550100896ADD /* GET_Mock_Response.json in Resources */ = {isa = PBXBuildFile; fileRef = C1C0580626C4D93200E5FCC2 /* GET_Mock_Response.json */; };
+		C1C0580B26C623D100E5FCC2 /* MockURLSessionRequestValidationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C0580A26C623D100E5FCC2 /* MockURLSessionRequestValidationTests.swift */; };
+		C1F5C04E26C85CD7000E883B /* URLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5C04D26C85CD6000E883B /* URLRequest.swift */; };
+		C1F5C05326C85CE6000E883B /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5C05026C85CE6000E883B /* MockURLSession.swift */; };
+		C1F5C05426C85CE6000E883B /* MockURLSessionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5C05126C85CE6000E883B /* MockURLSessionError.swift */; };
+		C1F5C05526C85CE6000E883B /* RequestValidationMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5C05226C85CE6000E883B /* RequestValidationMode.swift */; };
+		C1F5C05626C85CFB000E883B /* RecordURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* RecordURLSession.swift */; };
 		OBJ_46 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_57 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* APIRequest.swift */; };
 		OBJ_58 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* APIService.swift */; };
-		OBJ_59 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* MockURLSession.swift */; };
-		OBJ_60 /* RecordURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* RecordURLSession.swift */; };
 		OBJ_61 /* URLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_14 /* URLSession.swift */; };
 		OBJ_62 /* HTTPURLResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_16 /* HTTPURLResponse.swift */; };
 		OBJ_69 /* APIRequestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_20 /* APIRequestTests.swift */; };
@@ -75,8 +84,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A7D47CC26DC27B6002292A6 /* PigegonLogType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PigegonLogType.swift; sourceTree = "<group>"; };
+		C108148026CADBD900896ADD /* POST_Mock_Response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = POST_Mock_Response.json; sourceTree = "<group>"; };
+		C108148126CADBD900896ADD /* POST_Mock_Response_With_Dates_In_Request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = POST_Mock_Response_With_Dates_In_Request.json; sourceTree = "<group>"; };
+		C108148226CADBD900896ADD /* GET_Mock_Response_Without_Request.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = GET_Mock_Response_Without_Request.json; sourceTree = "<group>"; };
+		C1C0580626C4D93200E5FCC2 /* GET_Mock_Response.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GET_Mock_Response.json; sourceTree = "<group>"; };
+		C1C0580A26C623D100E5FCC2 /* MockURLSessionRequestValidationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSessionRequestValidationTests.swift; sourceTree = "<group>"; };
+		C1F5C04D26C85CD6000E883B /* URLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLRequest.swift; sourceTree = "<group>"; };
+		C1F5C05026C85CE6000E883B /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		C1F5C05126C85CE6000E883B /* MockURLSessionError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSessionError.swift; sourceTree = "<group>"; };
+		C1F5C05226C85CE6000E883B /* RequestValidationMode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestValidationMode.swift; sourceTree = "<group>"; };
 		OBJ_10 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
-		OBJ_12 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
 		OBJ_13 /* RecordURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordURLSession.swift; sourceTree = "<group>"; };
 		OBJ_14 /* URLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSession.swift; sourceTree = "<group>"; };
 		OBJ_16 /* HTTPURLResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPURLResponse.swift; sourceTree = "<group>"; };
@@ -93,7 +111,7 @@
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		OBJ_9 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		"Pigeon::PigeonService::Product" /* PigeonService.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PigeonService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		"Pigeon::UnitTests::Product" /* UnitTests.xctest */ = {isa = PBXFileReference; lastKnownFileType = file; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		"Pigeon::UnitTests::Product" /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,11 +133,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C1C0580226C4433B00E5FCC2 /* URLSession */ = {
+			isa = PBXGroup;
+			children = (
+				C1C0580A26C623D100E5FCC2 /* MockURLSessionRequestValidationTests.swift */,
+			);
+			name = URLSession;
+			path = Tests/UnitTests/URLSession;
+			sourceTree = "<group>";
+		};
+		C1C0580526C4D8CD00E5FCC2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C108148226CADBD900896ADD /* GET_Mock_Response_Without_Request.json */,
+				C108148126CADBD900896ADD /* POST_Mock_Response_With_Dates_In_Request.json */,
+				C108148026CADBD900896ADD /* POST_Mock_Response.json */,
+				C1C0580626C4D93200E5FCC2 /* GET_Mock_Response.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C1F5C04F26C85CE6000E883B /* MockURLSession */ = {
+			isa = PBXGroup;
+			children = (
+				C1F5C05026C85CE6000E883B /* MockURLSession.swift */,
+				C1F5C05126C85CE6000E883B /* MockURLSessionError.swift */,
+				C1F5C05226C85CE6000E883B /* RequestValidationMode.swift */,
+			);
+			path = MockURLSession;
+			sourceTree = "<group>";
+		};
 		OBJ_11 /* URLSession */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_12 /* MockURLSession.swift */,
+				C1F5C04F26C85CE6000E883B /* MockURLSession */,
 				OBJ_13 /* RecordURLSession.swift */,
+				C1F5C04D26C85CD6000E883B /* URLRequest.swift */,
 				OBJ_14 /* URLSession.swift */,
 			);
 			path = URLSession;
@@ -128,7 +177,8 @@
 		OBJ_15 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_16 /* HTTPURLResponse.swift */
+				1A7D47CC26DC27B6002292A6 /* PigegonLogType.swift */,
+				OBJ_16 /* HTTPURLResponse.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -137,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_19 /* UnitTests */,
+				C1C0580226C4433B00E5FCC2 /* URLSession */,
 			);
 			name = Tests;
 			sourceTree = SOURCE_ROOT;
@@ -144,6 +195,7 @@
 		OBJ_19 /* UnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				C1C0580526C4D8CD00E5FCC2 /* Resources */,
 				OBJ_20 /* APIRequestTests.swift */,
 				OBJ_21 /* APIServiceTests.swift */,
 				OBJ_22 /* EmptyBodyTests.swift */,
@@ -173,7 +225,7 @@
 			name = Products;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		OBJ_5 /*  */ = {
+		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
 				OBJ_6 /* Package.swift */,
@@ -184,7 +236,6 @@
 				OBJ_33 /* scripts */,
 				OBJ_34 /* README.md */,
 			);
-			name = "";
 			sourceTree = "<group>";
 		};
 		OBJ_7 /* Sources */ = {
@@ -246,6 +297,7 @@
 			buildPhases = (
 				OBJ_68 /* Sources */,
 				OBJ_77 /* Frameworks */,
+				C108149226CB54EF00896ADD /* Resources */,
 			);
 			buildRules = (
 			);
@@ -273,7 +325,7 @@
 			knownRegions = (
 				en,
 			);
-			mainGroup = OBJ_5 /*  */;
+			mainGroup = OBJ_5;
 			productRefGroup = OBJ_29 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -286,6 +338,20 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C108149226CB54EF00896ADD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C108149326CB550100896ADD /* GET_Mock_Response_Without_Request.json in Resources */,
+				C108149426CB550100896ADD /* POST_Mock_Response_With_Dates_In_Request.json in Resources */,
+				C108149526CB550100896ADD /* POST_Mock_Response.json in Resources */,
+				C108149626CB550100896ADD /* GET_Mock_Response.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		1AF1C832268CCE26006F1582 /* SwiftLint */ = {
@@ -323,10 +389,14 @@
 			files = (
 				OBJ_57 /* APIRequest.swift in Sources */,
 				OBJ_58 /* APIService.swift in Sources */,
-				OBJ_59 /* MockURLSession.swift in Sources */,
-				OBJ_60 /* RecordURLSession.swift in Sources */,
+				C1F5C04E26C85CD7000E883B /* URLRequest.swift in Sources */,
+				C1F5C05326C85CE6000E883B /* MockURLSession.swift in Sources */,
 				OBJ_61 /* URLSession.swift in Sources */,
+				C1F5C05526C85CE6000E883B /* RequestValidationMode.swift in Sources */,
+				1A7D47CD26DC27B6002292A6 /* PigegonLogType.swift in Sources */,
+				C1F5C05626C85CFB000E883B /* RecordURLSession.swift in Sources */,
 				OBJ_62 /* HTTPURLResponse.swift in Sources */,
+				C1F5C05426C85CE6000E883B /* MockURLSessionError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +409,7 @@
 				OBJ_71 /* EmptyBodyTests.swift in Sources */,
 				OBJ_72 /* HTTPURLResponseTests.swift in Sources */,
 				OBJ_74 /* Helpers.swift in Sources */,
+				C1C0580B26C623D100E5FCC2 /* MockURLSessionRequestValidationTests.swift in Sources */,
 				OBJ_75 /* NetworkHelpers.swift in Sources */,
 				OBJ_76 /* TestSubscriber.swift in Sources */,
 			);
@@ -536,7 +607,7 @@
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) XCODE_UNIT_TEST_TARGET";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = UnitTests;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
@@ -562,7 +633,7 @@
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) XCODE_UNIT_TEST_TARGET";
 				SWIFT_VERSION = 5.0;
 				TARGET_NAME = UnitTests;
 				TVOS_DEPLOYMENT_TARGET = 9.0;

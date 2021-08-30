@@ -1,0 +1,14 @@
+{
+  "status" : 204,
+  "request" : {
+    "path" : "\/api\/v1\/order-entries\/127361661\/pick",
+    "body" : "{\"details\":[{\"pickedQuantity\":1,\"barcode\":\"060383031527\",\"pickedQuantityWithShelfLifeException\":0,\"pickedWeight\":0}],\"containerLabel\":\"PCS012\"}",
+    "httpMethod" : "POST",
+    "headers" : {
+      "Content-Type" : "application\/json"
+    }
+  },
+  "response" : {
+
+  }
+}

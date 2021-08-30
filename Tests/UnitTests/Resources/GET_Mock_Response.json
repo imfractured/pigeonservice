@@ -1,0 +1,27 @@
+{
+  "status" : 200,
+  "request" : {
+    "path" : "\/api\/v1\/oauth\/login",
+    "httpMethod" : "GET",
+    "headers" : {
+      "Content-Type" : "application\/json"
+    }
+  },
+  "response" : {
+    "scope" : "read write trust",
+    "token_type" : "bearer",
+    "access_token" : "98615b49-db25-442d-99a0-e5d21d82ac8e",
+    "user" : {
+      "id" : "UA1028",
+      "storeId" : "1028",
+      "device" : "12345",
+      "cartId" : "UA1028",
+      "pickableStagingAreas" : [
+        "STG-AMBT",
+        "STG-FRDG",
+        "STG-HOT",
+        "STG-FRZR"
+      ]
+    }
+  }
+}

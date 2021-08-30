@@ -3,37 +3,19 @@ import Foundation
 import FoundationNetworking
 #endif
 
-public enum MockURLSessionError: Error {
-    case unableToLocateResponse(String)
-    case unableToParseResponse(Data)
-    case noURL
-}
-
-extension MockURLSessionError: LocalizedError {
-    public var errorDescription: String? {
-        switch self {
-        case .unableToLocateResponse(let path):
-            return "Failed to find mock response at: \(path) or the default folder"
-
-        case .unableToParseResponse(let data):
-            return "Failed to parse mock response: \(String(data: data, encoding: .utf8) ?? "")"
-
-        case .noURL:
-            return "Incoming mock request has no URL"
-        }
-    }
-}
-
 /// `URLSessionType` implementation used for reading mock jsons from the local file system
 open class MockURLSession: URLSessionType {
     let directory: String
+    let requestValidationMode: RequestValidationMode
     public var urlCounter: [String: Int] = [:]
 
     /// creates an instance of `MockURLSession` that looks for the mock json files in the `directory` path
     ///
     /// - Parameter directory: a `String` value specifiying the path to the mock responses
-    public init(directory: String) {
+    /// - Parameter requestValidationMode: a `RequestValidationMode` value specifying mode of validation
+    public init(directory: String, requestValidationMode: RequestValidationMode = .none) {
         self.directory = directory
+        self.requestValidationMode = requestValidationMode
     }
 
     open func loadJsonFromTestFolder(file: String) -> Data? {
@@ -66,20 +48,20 @@ open class MockURLSession: URLSessionType {
         // try by incrementing
         urlCounter[url.path, default: -1] += 1
         if let mockData = loadJsonFromTestFolder(file: url.path) {
-            completionHandler(process(mockData: mockData, url: url))
+            completionHandler(process(request: request, mockData: mockData, url: url))
             return
         }
 
         // second try, reset to 0
         urlCounter[url.path, default: -1] = 0
         if let mockData = loadJsonFromTestFolder(file: url.path) {
-            completionHandler(process(mockData: mockData, url: url))
+            completionHandler(process(request: request, mockData: mockData, url: url))
             return
         }
 
         // try default folder
         if let mockData = loadJsonFromDefaultFolder(file: url.path) {
-            completionHandler(process(mockData: mockData, url: url))
+            completionHandler(process(request: request, mockData: mockData, url: url))
             return
         }
 
@@ -92,7 +74,7 @@ open class MockURLSession: URLSessionType {
         )
     }
 
-    func process(mockData: Data, url: URL) -> Result<URLSessionResponse, Error> {
+    func process(request: URLRequest, mockData: Data, url: URL) -> Result<URLSessionResponse, Error> {
         do {
             if
                 let body = try JSONSerialization.jsonObject(with: mockData) as? [String: Any],
@@ -105,6 +87,23 @@ open class MockURLSession: URLSessionType {
                     httpVersion: "1.1",
                     headerFields: nil
                 ) {
+                // Validate request object
+                if case .match(let criteria) = requestValidationMode {
+                    do {
+                        guard let requestJSON = body["request"] else {
+                            throw MockURLSessionError.mockRequestNotFound(request)
+                        }
+
+                        let data = try JSONSerialization.data(withJSONObject: requestJSON, options: .prettyPrinted)
+                        let mockRequest = try JSONDecoder().decode(URLRequest.self, from: data)
+                        if try URLRequest.match(lhs: mockRequest, rhs: request, criteria: criteria) == false {
+                            return .failure(MockURLSessionError.requestValidationFailed(request))
+                        }
+                    } catch {
+                        return .failure(error)
+                    }
+                }
+
                 let data = try JSONSerialization.data(withJSONObject: responseJSON, options: .prettyPrinted)
                 return .success((data, urlResponse))
             }

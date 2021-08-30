@@ -1,0 +1,15 @@
+{
+  "response" : {
+
+  },
+  "status" : 204,
+  "request" : {
+    "path" : "\/api\/v1\/order-entries\/127361661\/pick",
+    "body" : "{\"details\":[{\"pickedQuantity\":1,\"barcode\":\"060383031527\",\"pickedQuantityWithShelfLifeException\":0,\"pickedWeight\":0,\"pickEndTime\":\"2021-08-13T00:12:50.378-04:00\",\"pickStartTime\":\"2021-08-13T00:12:50.378-04:00\"}],\"containerLabel\":\"PCS012\"}",
+    "httpMethod" : "POST",
+    "headers" : {
+      "Authorization" : "Bearer 71540d72-bce9-4a0a-b280-435248333a9a",
+      "Content-Type" : "application\/json"
+    }
+  }
+}

@@ -41,8 +41,10 @@ public class RecordURLSession: URLSessionType {
 
                     do {
                         let body = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers)
+
                         let dictionary: [String: Any] = [
                             "status": httpResponse.statusCode,
+                            "request": try request.convertToJSONObject(),
                             "response": body ?? [:]
                         ]
                         // create record path folder and api path folders

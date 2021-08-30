@@ -63,6 +63,7 @@ public final class APIService<CustomError: APIErrorResponseType>: APIServiceType
     private var errorType: CustomError.Type
     public var decoder: JSONDecoder
     public var encoder: JSONEncoder
+    public var logger: PigeonLogType?
 
     public init(
         baseURLString: String,
@@ -70,7 +71,8 @@ public final class APIService<CustomError: APIErrorResponseType>: APIServiceType
         errorType: CustomError.Type,
         defaultHeaders: [String: String] = [:],
         decoder: JSONDecoder = JSONDecoder(),
-        encoder: JSONEncoder = JSONEncoder()
+        encoder: JSONEncoder = JSONEncoder(),
+        logger: PigeonLogType? = nil
     ) {
         self.baseURLString = baseURLString
         self.urlSession = urlSession
@@ -78,8 +80,9 @@ public final class APIService<CustomError: APIErrorResponseType>: APIServiceType
         self.errorType = errorType
         self.encoder = encoder
         self.decoder = decoder
+        self.logger = logger
     }
-
+    // swiftlint:disable:next function_body_length
     public func send<APIRequest: APIRequestType>(
         _ apiRequest: APIRequest,
         completionHandler: @escaping (Result<APIRequest.ResponseBody, Error>) -> Void
@@ -91,12 +94,20 @@ public final class APIService<CustomError: APIErrorResponseType>: APIServiceType
                 defaultHeaders: defaultHeaders,
                 encoder: encoder
             )
-            debugPrint(
-                "Request:",
-                request,
-                String(data: request.httpBody ?? Data(), encoding: .utf8) ?? ""
+            self.logger?.log(
+                message: """
+                    Request: \(request), \(String(data: request.httpBody ?? Data(), encoding: .utf8) ?? "Error")
+                """,
+                level: .debug
             )
+            let startTime = Date()
             urlSession.send(request, completionHandler: { result in
+                self.logger?.log(
+                    message: """
+                        Completed: \(request), ResponseTime: \(Date().timeIntervalSince(startTime) * 1000) ms
+                    """,
+                    level: .info
+                )
                 switch result {
                 case .success(let response):
                     let httpResponse = response.1
@@ -110,10 +121,11 @@ public final class APIService<CustomError: APIErrorResponseType>: APIServiceType
                             errorType: self.errorType,
                             decoder: self.decoder
                         )
-                        debugPrint(
-                            "Error response:",
-                            httpResponse.statusCode,
-                            error
+                        self.logger?.log(
+                            message: """
+                                HTTP Error: \(httpResponse.statusCode), \(error)
+                            """,
+                            level: .error
                         )
                         completionHandler(.failure(error))
                         return
@@ -130,10 +142,22 @@ public final class APIService<CustomError: APIErrorResponseType>: APIServiceType
                         )
                         completionHandler(.success(serializedObject))
                     } catch {
+                        self.logger?.log(
+                            message: """
+                                Seralization Error: \(error)
+                            """,
+                            level: .error
+                        )
                         completionHandler(.failure(error))
                     }
 
                 case .failure(let error):
+                    self.logger?.log(
+                        message: """
+                            Request Error: \(error)
+                        """,
+                        level: .error
+                    )
                     return completionHandler(.failure(error))
                 }
             }

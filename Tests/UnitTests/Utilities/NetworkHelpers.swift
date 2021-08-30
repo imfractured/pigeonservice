@@ -1,7 +1,4 @@
 import Foundation
-#if canImport(FoundationNetworking)
-import FoundationNetworking
-#endif
 @testable import PigeonService
 
 class MockAPIRequest<B: Encodable, ResponseB: Decodable>: APIRequestType {
@@ -29,7 +26,7 @@ struct TestDecodable: Decodable, Equatable {
     let test: Int
 }
 
-class MockURLSession: URLSessionType {
+class MockURLSessionForTests: URLSessionType {
     private(set) var sendRequests: [URLRequest] = []
     var responseMap: [String: Result<URLSessionResponse, Error>]!
 

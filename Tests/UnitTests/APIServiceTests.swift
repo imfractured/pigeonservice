@@ -9,12 +9,12 @@ struct ServiceError: APIErrorResponseType {
 
 class APIServiceTests: XCTestCase {
     var sut: APIServiceType!
-    var mockURLSession: MockURLSession!
+    var mockURLSession: MockURLSessionForTests!
     var mockAPIRequest: MockAPIRequest<FailingEncodable, TestDecodable>!
     var subscriber: Subscribers.Test<TestDecodable, Error>!
 
     override func setUp() {
-        mockURLSession = MockURLSession()
+        mockURLSession = MockURLSessionForTests()
         mockAPIRequest = MockAPIRequest(body: FailingEncodable())
         sut = APIService(
             baseURLString: "http://example.com",
@@ -49,12 +49,12 @@ class APIServiceTests: XCTestCase {
 
 class APIServiceAccessTokenTests: XCTestCase {
     var sut: APIServiceType!
-    var mockURLSession: MockURLSession!
+    var mockURLSession: MockURLSessionForTests!
     var mockAPIRequest: MockAPIRequest<Int, TestDecodable>!
 
     override func setUp() {
         mockAPIRequest = MockAPIRequest(body: 0)
-        mockURLSession = MockURLSession()
+        mockURLSession = MockURLSessionForTests()
         mockURLSession.responseMap = [
             "unused_url": .success(
                 (data: Data(), response: HTTPURLResponse.makeTest(statusCode: 200))
@@ -87,7 +87,7 @@ class APIServiceAccessTokenTests: XCTestCase {
 
 class APIServiceEncoderTests: XCTestCase {
     var sut: APIService<ServiceError>!
-    var mockURLSession: MockURLSession!
+    var mockURLSession: MockURLSessionForTests!
     var mockAPIRequest: MockAPIRequest<DateBody, TestDecodable>!
 
     struct DateBody: Encodable {
@@ -95,7 +95,7 @@ class APIServiceEncoderTests: XCTestCase {
     }
 
     override func setUp() {
-        mockURLSession = MockURLSession()
+        mockURLSession = MockURLSessionForTests()
         mockURLSession.responseMap = [
             "unused_url": .success(
                 (data: Data(), response: HTTPURLResponse.makeTest(statusCode: 200))
@@ -142,7 +142,7 @@ class APIServiceEncoderTests: XCTestCase {
 
 class APIServiceDecoderTests: XCTestCase {
     var sut: APIService<ServiceError>!
-    var mockURLSession: MockURLSession!
+    var mockURLSession: MockURLSessionForTests!
     var mockAPIRequest: MockAPIRequest<Int, DateBody>!
     var subscriber: Subscribers.Test<DateBody, Error>!
 
@@ -151,7 +151,7 @@ class APIServiceDecoderTests: XCTestCase {
     }
 
     override func setUp() {
-        mockURLSession = MockURLSession()
+        mockURLSession = MockURLSessionForTests()
         mockAPIRequest = MockAPIRequest(body: 0)
         subscriber = Subscribers.Test()
     }
