@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 public enum MockURLSessionError: Error {
     case unableToLocateResponse(String)
