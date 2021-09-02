@@ -1,4 +1,7 @@
 import Foundation
+#if canImport(FoundationNetworking)
+import FoundationNetworking
+#endif
 
 enum URLRequestKeys: String, CodingKey {
     case httpMethod
@@ -31,7 +34,7 @@ extension URLRequest: Encodable {
         }
     }
 
-    func convertToJSONObject() throws -> Any {
+    public func convertToJSONObject() throws -> Any {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         return try JSONSerialization.jsonObject(
